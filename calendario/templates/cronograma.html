@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"
+      type="text/css">
+<link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet"
+      type="text/css">
+
+<link href='http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.css' rel='stylesheet' />
+<link href='http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.print.css' rel='stylesheet' media='print' />
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.js'></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/lang-all.js"></script>
+
+<script>
+
+	$(document).ready(function() {
+
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+
+           events: '/showcronograma/{{ evento }}/{{ id }}/',
+            lang: 'pt-br',
+			defaultDate: '2015-12-12',
+            defaultView: 'agendaWeek',
+			editable: false,
+			eventLimit: true
+		});
+		
+	});
+
+</script>
+<style>
+
+	body {
+		margin: 40px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
+
+	#calendar {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+</style>
+</head>
+
+<body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="nav nav-pills">
+              <li>
+                <a href="/cronograma/professor/">Professores</a>
+              </li>
+              <li>
+                <a href="/cronograma/sala/">Salas</a>
+              </li>
+              <li>
+                <a href="/cronograma/disciplina/">Disciplinas</a>
+              </li>
+              <li>
+                <a href="/cronograma/turma/">Turmas de período</a>
+              </li>
+              <li>
+                <a href="/cronograma/aluno/">Alunos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <ul class="list-group">
+            {% for i in lista %}
+              <li class="list-group-item"><a href="/cronograma/{{ evento }}/{{ i.id }}/"> {{ i }}</a></li>
+            {% endfor %}
+            </ul>
+          </div>
+          <div class="col-md-8">
+               <div id='calendar'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

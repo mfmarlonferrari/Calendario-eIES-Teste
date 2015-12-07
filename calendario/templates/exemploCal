@@ -1,0 +1,20 @@
+events: [
+                {
+                    title:"Lógica e matemática computacional - Eng",
+                    start: '8:20', // a start time (10am in this example)
+                    end: '9:50', // an end time (6pm in this example)
+                    dow: [ 1, 4, 5 ]
+                },
+                {
+                    title:"Programação de computadores",
+                    start: '10:10', // a start time (10am in this example)
+                    end: '11:40', // an end time (6pm in this example)
+                    dow: [ 1, 5 ] // Repeat monday and thursday
+                },
+                {
+                    title:"Geoprocessamento",
+                    start: '13:00', // a start time (10am in this example)
+                    end: '14:00', // an end time (6pm in this example)
+                    dow: [ 2, 5 ] // Repeat monday and thursday
+                }
+			],
